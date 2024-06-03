@@ -74,10 +74,18 @@ header {
 			color: var(--purple);
 			color: var(--yellow);
 			text-decoration: none;
+			font-size: 26px;
+			@media (max-width:768px){
+				font-size:20px;
+			}
 		}
 
 		&:hover {
 			text-decoration: none !important;
+		}
+
+		@media (max-width:768px){
+			width: 100%;
 		}
 	}
 
