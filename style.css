@@ -216,7 +216,7 @@ h1 {
 		flex-direction:column;
 	}
 	.hero-blue {
-		flex:1;
+		flex:2;
 		background-color: var(--purple);
 		background-color: var(--yellow-100);
 		border-radius:30px;
@@ -253,16 +253,17 @@ h1 {
 		flex:1;
 		background-color: var(--yellow);
 		border-radius:30px;
-		padding:30px 30px;
+		padding: 0 30px;
 		display:flex;
 		justify-content:center;
 		align-items:center;
 		transition: box-shadow 0.3s ease-in-out;
 		img {
-			/* margin-top:-60px; */
-			max-width:420px;
-			/* margin-bottom:-10px; */
-			border-radius: 30px;
+			/* margin-top: -60px; */
+            max-width: 420px;
+            /* margin-bottom: -10px; */
+            /* border-radius: 30px; */
+            filter: drop-shadow(2px 4px 6px black);
 		}
 		&:hover {
 			box-shadow: 0 0 20px 10px rebeccapurple;
@@ -365,18 +366,47 @@ h3 {
 				margin-right:100px;
 				margin-bottom:20px;
 				color: #fff;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				max-width: 100%;
 				li {
 					display:inline-block;
 					background-color: var(--purple);
 					padding:10px 20px;
 					border-radius:15px;
 					margin-bottom:10px;
+					color: white;
+					margin: 2px;
+					padding: 10px;
+					text-align: center;
+					flex-grow: 1;
+					flex-basis: calc(25% - 4px);
+					box-sizing: border-box;
+					position: relative;
+				}
+				li::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background: 
+						linear-gradient(white 2px, transparent 2px) 0 0,
+						linear-gradient(90deg, white 2px, transparent 2px) 0 0;
+					background-size: 50% 50%, 50% 50%;
+					opacity: 0.1;
+				}
+			}
+			@media (max-width: 1024px) {
+				ul {
+					margin-right: 0;
 				}
 			}
 		}
 		.right-column {
 			flex:1;
-			/* color: #fff; */
 			p {
 				margin-bottom:20px;
 			}
