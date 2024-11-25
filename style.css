@@ -249,7 +249,7 @@ h1 {
 	}
 	.hero-yellow {
 		flex:1;
-		background-color: var(--yellow);
+		/* background-color: var(--yellow); */
 		border-radius:30px;
 		padding: 0 30px;
 		display:flex;
@@ -258,11 +258,11 @@ h1 {
 		transition: box-shadow 0.3s ease-in-out;
 		img {
             max-width: 420px;
-            filter: drop-shadow(2px 4px 6px black);
+            /* filter: drop-shadow(2px 4px 6px black); */
 		}
-		&:hover {
+		/* &:hover {
 			box-shadow: 0 0 10px 5px rebeccapurple;
-		}
+		} */
 	}
 }
 
