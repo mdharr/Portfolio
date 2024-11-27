@@ -1167,3 +1167,30 @@ footer div a {
 	width: 18px;
 	height: 18px;
   }
+
+.animated-text {
+	opacity: 0;
+	transform: translateY(50px);
+	transition: opacity 2.5s, transform 0.5s;
+}
+
+#skills,
+#education,
+#projects {
+  opacity: 0;
+  transform: translateY(150px);
+  /* transition: opacity 2s ease-out, transform 2s cubic-bezier(0.5, 0.9, 0.1, 0.95); */
+  transition: opacity 2s ease-out, transform 1.5s cubic-bezier(0,1.10,1,.99); /* this is excellent */
+}
+
+#skills.visible,
+#education.visible,
+#projects.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+  
+.visible {
+	opacity: 1 !important;
+	transform: translateY(0);
+}

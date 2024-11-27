@@ -88,3 +88,26 @@ function animateFavicon() {
 }
 
 window.addEventListener('DOMContentLoaded', animateFavicon);
+
+const observer = new IntersectionObserver((entries) => {
+	entries.forEach((entry) => {
+	  if (entry.isIntersecting) {
+		if (entry.target.classList.contains('animated-text')) {
+		  entry.target.classList.add('visible');
+		} else {
+		  const sectionId = entry.target.closest('section').id;
+		  document.getElementById(sectionId).classList.add('visible');
+		}
+	  }
+	});
+  });
+  
+  const animatedText = document.querySelector('.animated-text');
+  const skillsH2 = document.querySelector('#skills h2');
+  const educationH2 = document.querySelector('#education h2');
+  const projectsH2 = document.querySelector('#projects h2');
+  
+  observer.observe(animatedText);
+  observer.observe(skillsH2);
+  observer.observe(educationH2);
+  observer.observe(projectsH2);
