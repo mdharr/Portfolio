@@ -3,19 +3,33 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio</title>
+	<title>Michael Harrington — Independent Full Stack Web Developer</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/ScrollTrigger.min.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/CustomEase.min.js" defer></script>
 	<link rel="stylesheet" href="style.css">
-	<script src="script.js"></script>
-	<link rel="icon" type="image/jpg" href="imgs/favicon.jpg">
+	<script src="script.js" defer></script>
+	<link rel="icon" type="image/svg+xml" href="imgs/favicon.svg">
+	<!-- <link rel="icon" type="image/jpg" href="imgs/favicon.jpg"> -->
 </head>
 <body>
+	<video autoplay muted loop playsinline class="background-video" id="bgVideo">
+		<source src="imgs/stars_animation.mp4" type="video/mp4">
+	</video>
 	<header>
 		<a href="#" class="logo-holder">
-			<div class="logo">M</div>
-			<!-- <div class="logo-text">My Portfolio</div> -->
+			<div class="logo-letter">M</div>
+			<!-- <div class="logo">
+				<svg class="logo-circle circle-left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+				  <circle cx="50" cy="50" r="50" />
+				</svg>
+				<svg class="logo-circle circle-right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+				  <circle cx="50" cy="50" r="50" />
+				</svg>
+			</div> -->
 		</a>
 		<nav>
 			<ul id="menu">
@@ -24,6 +38,9 @@
 				</li>
 				<li>
 					<a href="#skills">Skills</a>
+				</li>
+				<li>
+					<a href="#education">Education</a>
 				</li>
 				<li>
 					<a href="#projects">Projects</a>
@@ -40,7 +57,15 @@
 		</nav>
 	</header>
 	<main>
-		<section class="hero container">
+		<!-- <div class="logo">
+			<svg class="logo-circle circle-left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+			  <circle cx="50" cy="50" r="50" />
+			</svg>
+			<svg class="logo-circle circle-right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+			  <circle cx="50" cy="50" r="50" />
+			</svg>
+		  </div> -->
+		<!-- <section class="hero container">
 			<div class="hero-blue">
 				<div>
 					<h1><small>Hi I'm</small>
@@ -82,37 +107,86 @@
 				</div>
 			</div>
 			<div class="hero-yellow">
-				<!-- <img src="imgs/logo-gh.png" alt="Michael Harrington" width="75%" /> -->
-				<img src="imgs/undraw_version_control_re_mg66.svg" alt="Michael Harrington" width="75%" />
+				<img src="imgs/undraw_version_control_re_mg66.svg" alt="Michael Harrington"/>
+				<img src="imgs/undraw_code_thinking_re_gka2.svg" alt="Michael Harrington"/>
+				<img src="imgs/undraw_coding_re_iv62.svg" alt="Michael Harrington"/>
 			</div>
-		</section>
-		<section class="logos container">
-			<div class="marquee">
-				<div class="track">
-					<img src="imgs/html.png" alt="HTML" width="128" />
-					<img src="imgs/css.png" alt="CSS" width="128" />
-					<img src="imgs/javascript.png" alt="JS" width="128" />
-					<img src="imgs/typescript.png" alt="TS" width="128" />
-					<img src="imgs/angular.png" alt="Angular" width="128" />
-					<img src="imgs/sass.png" width="128" alt="Sass" />
-					<img src="imgs/git.png" width="128" alt="Git" />
-					<img src="imgs/java.png" width="128" alt="Java" />
-					<img src="imgs/spring.png" width="128" alt="Spring" />
-					<img src="imgs/spring_boot.png" width="128" alt="Boot" />
-					<img src="imgs/mysql.png" width="128" alt="MySql" />
-					<img src="imgs/vscode.png" width="128" alt="VS Code" />
-					<img src="imgs/html.png" alt="HTML" width="128" />
-					<img src="imgs/css.png" alt="CSS" width="128" />
-					<img src="imgs/javascript.png" alt="JS" width="128" />
-					<img src="imgs/typescript.png" alt="TS" width="128" />
-					<img src="imgs/angular.png" alt="Angular" width="128" />
-					<img src="imgs/sass.png" width="128" alt="Sass" />
-					<img src="imgs/git.png" width="128" alt="Git" />
-					<img src="imgs/java.png" width="128" alt="Java" />
-					<img src="imgs/spring.png" width="128" alt="Spring" />
-					<img src="imgs/spring_boot.png" width="128" alt="Boot" />
-					<img src="imgs/mysql.png" width="128" alt="MySql" />
-					<img src="imgs/vscode.png" width="128" alt="VS Code" />
+		</section> -->
+		<section class="hero container">
+			<div class="hero-content">
+				<div class="hero-text">
+					<h1 class="animated-text">
+						<span class="greeting">Hi, I'm</span>
+						Michael Harrington
+					</h1>
+					<p class="title-text">Full-Stack Java Software Engineer</p>
+					<div class="description">
+						<p>Building robust web applications with Spring Boot and Angular. Passionate about creating clean, efficient, and scalable solutions.</p>
+					</div>
+					<div class="cta-group">
+						<a href="./Sample_Resume_Template.pdf" class="cta-button primary">
+							<svg viewBox="0 0 24 24" class="button-icon" width="18" height="18">
+								<path fill="currentColor" d="M13 9h5.5L13 3.5V9M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2h9m3-4v-2H6v2h12z"/>
+							</svg>
+							View Resume
+						</a>
+						<a href="mailto:mdharr7@gmail.com" class="cta-button secondary">
+							<svg viewBox="0 0 24 24" class="button-icon" width="18" height="18">
+								<path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+							</svg>
+							Contact Me
+						</a>
+					</div>
+					<div class="social-links">
+						<div class="social-section">
+							<a class="social-links" href="https://www.linkedin.com/in/michael-harrington-58b41a25a/" target="_blank" rel="noreferrer">
+								<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="w-6 h-5 lg:h-7 lg:w-8" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+								</svg>
+							</a>
+							<a class="social-links" href="https://x.com/mdharr7" target="_blank" rel="noreferrer">
+								<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="w-6 h-5 lg:h-7 lg:w-8" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+									<path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+								</svg>
+							</a>
+							<a class="social-links" href="https://github.com/mdharr" target="_blank" rel="noreferrer">
+								<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="w-6 h-5 lg:h-7 lg:w-8" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+									<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+								</svg>
+							</a>
+							<a class="social-links" href="mailto:mdharr7@gmail.com" target="_blank" rel="noreferrer">
+								<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="w-6 h-5 lg:h-7 lg:w-8" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+									<path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 110.8V792H136V270.8l-27.6-21.5 39.3-50.5 42.8 33.3h643.1l42.8-33.3 39.3 50.5-27.7 21.5zM833.6 232L512 482 190.4 232l-42.8-33.3-39.3 50.5 27.6 21.5 341.6 265.6a55.99 55.99 0 0 0 68.7 0L888 270.8l27.6-21.5-39.3-50.5-42.7 33.2z"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="hero-image">
+					<img src="imgs/undraw_coding_re_iv62.svg" alt="Coding illustration" class="main-illustration" />
+					<!-- <img src="imgs/undraw_version_control_re_mg66.svg" alt="Michael Harrington" class="main-illustration"/> -->
+					<!-- <img src="imgs/undraw_code_thinking_re_gka2.svg" alt="Michael Harrington" class="main-illustration"/> -->
+					<div class="floating-elements">
+						<!-- Add small floating tech icons here -->
+						<div class="floating-elements">
+							<!-- Add these inside your hero-image div -->
+							<div class="float-item" style="--delay: 0s">
+								<img src="imgs/javascript.png" alt="Spring" />
+							</div>
+							<div class="float-item" style="--delay: 1s">
+								<img src="imgs/java.png" alt="Angular" />
+							</div>
+							<div class="float-item" style="--delay: 2s">
+								<img src="imgs/css.png" alt="Java" />
+							</div>
+							<div class="float-item" style="--delay: 0.5s">
+								<img src="imgs/git.png"  alt="TypeScript" />
+							</div>
+							<div class="float-item" style="--delay: 1.5s">
+								<img src="imgs/html.png" alt="MySQL" />
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -123,39 +197,62 @@
 			</h2>
 			<div class="holder-blue">
 				<div class="left-column">
-					<h3>Frontend</h3>
-					<ul>
-						<li>HTML</li>
-						<li>CSS</li>
-						<li>JavaScript</li>
-						<li>TypeScript</li>
-						<li>Angular</li>
-						<li>Sass</li>
-					</ul>
-					<h3>Backend</h3>
-					<ul>
-						<li>Java</li>
-						<li>Spring</li>
-						<li>Spring Boot</li>
-						<li>Hibernate</li>
-						<li>Git</li>
-						<li>MySQL</li>
-					</ul>
+					<section class="skills-container">
+						<div class="skill-category">
+							<h3>Front-end</h3>
+							<div class="skill-list">
+								<img src="imgs/html.png" alt="HTML">
+								<img src="imgs/css.png" alt="CSS">
+								<img src="imgs/javascript.png" alt="JavaScript">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" />
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" />
+							</div>
+						</div>
+						
+						<div class="skill-category">
+							<h3>Back-end</h3>
+							<div class="skill-list">
+								<img src="imgs/java.png" alt="Java">
+								<img src="imgs/spring.png" alt="Spring">
+								<img src="imgs/mysql.png" alt="MySQL">
+								<svg viewBox="0 0 128 128" stroke="currentColor" height="3em">
+									<path fill="white" d="M126.67 98.44c-4.56 1.16-7.38.05-9.91-3.75-5.68-8.51-11.95-16.63-18-24.9-.78-1.07-1.59-2.12-2.6-3.45C89 76 81.85 85.2 75.14 94.77c-2.4 3.42-4.92 4.91-9.4 3.7l26.92-36.13L67.6 29.71c4.31-.84 7.29-.41 9.93 3.45 5.83 8.52 12.26 16.63 18.67 25.21 6.45-8.55 12.8-16.67 18.8-25.11 2.41-3.42 5-4.72 9.33-3.46-3.28 4.35-6.49 8.63-9.72 12.88-4.36 5.73-8.64 11.53-13.16 17.14-1.61 2-1.35 3.3.09 5.19C109.9 76 118.16 87.1 126.67 98.44zM1.33 61.74c.72-3.61 1.2-7.29 2.2-10.83 6-21.43 30.6-30.34 47.5-17.06C60.93 41.64 63.39 52.62 62.9 65H7.1c-.84 22.21 15.15 35.62 35.53 28.78 7.15-2.4 11.36-8 13.47-15 1.07-3.51 2.84-4.06 6.14-3.06-1.69 8.76-5.52 16.08-13.52 20.66-12 6.86-29.13 4.64-38.14-4.89C5.26 85.89 3 78.92 2 71.39c-.15-1.2-.46-2.38-.7-3.57q.03-3.04.03-6.08zm5.87-1.49h50.43c-.33-16.06-10.33-27.47-24-27.57-15-.12-25.78 11.02-26.43 27.57z"></path>
+								</svg>
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" />          
+							</div>
+						</div>
+						
+						<div class="skill-category">
+							<h3>Tools</h3>
+							<div class="skill-list">
+								<img src="imgs/git.png" alt="Git">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" />
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg" />
+								<img src="imgs/vscode.png" alt="VS Code">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg" />
+								<!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eclipse/eclipse-original.svg" /> -->
+							</div>
+						</div>
+					</section>
 				</div>
 				<div class="right-column">
-					<h3>A bit about me</h3>
+					<h3>Who am I?</h3>
 					<p>
-						Hi I'm Michael Harrington, a US Navy Veteran and passionate Full Stack Developer. I enjoy building applications with Java Spring and Angular.
+						Full Stack Developer and U.S. Navy veteran crafting end-to-end web solutions. Experienced in multiple frameworks including Java Spring, Angular, React, and Node.js/Express.
 					</p>
 					<p>
-						I'm currently working on implementing Open AI into one of my projects in the form of a chatbot that guides users on a classic Sword & Sorcery adventure. I recently completed a project using Spring Boot and Angular to create a skill build planner for a classic action role playing game.
+						<span style="color: var(--yellow);">Recent completion</span>: A comprehensive skill build planner for action RPG enthusiasts, built with Spring Boot and Angular.
+						<br><br>
+						<span style="color: var(--yellow);">Current project</span>: Developing an AI-driven interactive storytelling feature using OpenAI technology to deliver immersive fantasy adventures.
+						<br><br>
+						<span style="color: var(--yellow);">Next project</span>: Co-developing a modern take on the classic Hangman game with my son using React and Node.js/Express, featuring a global leaderboard system, custom word categories, and real-time score tracking.
 					</p>
 				</div>
 			</div>
 		</section>
-		<section class="work-experience container">
+		<section id="education" class="work-experience container">
 			<h2>
-				<small>Recent</small>
+				<small>Prior</small>
 				Work and Education
 			</h2>
 			<div class="jobs">
@@ -210,7 +307,7 @@
 		<section id="projects" class="bento container">
 			<h2>
 				<small>
-					Previous
+					A selection of
 				</small>
 				Completed Projects
 			</h2>
