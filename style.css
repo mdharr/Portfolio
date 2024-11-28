@@ -137,10 +137,13 @@ header {
 					padding:10px 20px;
 					color:var(--base);
 					color: #fff;
+					border: 1px solid transparent;
 					&:hover {
 						background-color: var(--base-100);
 						border-radius:10px;
 						text-decoration:none;
+						border: 1px solid #9153F4;
+						color: #9153F4;
 					}
 				}
 			}
