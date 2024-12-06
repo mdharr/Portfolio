@@ -89,25 +89,44 @@ function animateFavicon() {
 
 window.addEventListener('DOMContentLoaded', animateFavicon);
 
+let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
+let isScrollingUp = false;
+
+window.addEventListener('scroll', () => {
+  const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+  isScrollingUp = currentScrollTop < lastScrollTop;
+  lastScrollTop = currentScrollTop;
+});
+
 const observer = new IntersectionObserver((entries) => {
-	entries.forEach((entry) => {
-	  if (entry.isIntersecting) {
-		if (entry.target.classList.contains('animated-text')) {
-		  entry.target.classList.add('visible');
-		} else {
-		  const sectionId = entry.target.closest('section').id;
-		  document.getElementById(sectionId).classList.add('visible');
-		}
-	  }
-	});
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      if (entry.target.classList.contains('animated-text')) {
+        entry.target.classList.add('visible');
+      } else {
+        const sectionId = entry.target.closest('section').id;
+        document.getElementById(sectionId).classList.add('visible');
+      }
+    } else if (isScrollingUp && !entry.isIntersecting) {
+      if (entry.target.classList.contains('animated-text')) {
+        entry.target.classList.remove('visible');
+      } else {
+        const sectionId = entry.target.closest('section').id;
+        document.getElementById(sectionId).classList.remove('visible');
+      }
+    }
   });
-  
-  const animatedText = document.querySelector('.animated-text');
-  const skillsH2 = document.querySelector('#skills h2');
-  const educationH2 = document.querySelector('#education h2');
-  const projectsH2 = document.querySelector('#projects h2');
-  
-  observer.observe(animatedText);
-  observer.observe(skillsH2);
-  observer.observe(educationH2);
-  observer.observe(projectsH2);
+}, {
+  threshold: 0,
+  rootMargin: '0px'
+});
+
+const animatedText = document.querySelector('.animated-text');
+const skillsH2 = document.querySelector('#skills h2');
+const educationH2 = document.querySelector('#education h2');
+const projectsH2 = document.querySelector('#projects h2');
+
+observer.observe(animatedText);
+observer.observe(skillsH2);
+observer.observe(educationH2);
+observer.observe(projectsH2);
