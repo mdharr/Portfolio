@@ -1360,4 +1360,110 @@ footer div a {
 	.tech {
 	  flex-wrap: wrap;
 	}
-  }
+}
+
+
+
+
+
+
+
+
+
+
+.hero .scrollDown {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+}
+
+.hero .scrollDown:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #eee;
+    -webkit-animation: circlemove 1.6s ease-in-out infinite, circlemovehide 1.6s ease-out infinite;
+    animation: circlemove 1.6s ease-in-out infinite, circlemovehide 1.6s ease-out infinite;
+}
+
+.hero .scrollDown span {
+    position: absolute;
+    left: 10px;
+    bottom: -1px;
+    color: #eee;
+    font-size: 0.5rem;
+    letter-spacing: 0.5em;
+    -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+.hero .scrollDown:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 50px;
+    background: #eee;
+}
+
+@keyframes circlemove {
+	0% {
+		bottom: 45px;
+	}
+	100% {
+		bottom: -5px;
+	}
+}
+
+@keyframes circlemovehide {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	80% {
+		opacity: 0.9;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.to-top {
+    position: fixed;
+    bottom: 5px;
+    cursor: pointer;
+    z-index: 50;
+	right: 20px;
+	bottom: 20px;
+	width: 51px;
+	height: auto;
+	transition: .3s;
+	color: #fff;
+	font-size: 0.6rem;
+}
+
+.to-top:hover {
+	color: var(--purple);
+	text-decoration: none;
+}
+
+.to-top:after {
+    position: absolute;
+    top: -1em;
+    left: 38%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid;
+    border-color: #fff #fff transparent transparent;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    content: "";
+}
