@@ -60,6 +60,7 @@ const easeInExpo = "0.7, 0, 0.84, 0";
 
 const video = document.getElementById('bgVideo');
 video.playbackRate = 1;
+video.click();
 
 video.addEventListener('timeupdate', function() {
     const timeLeft = video.duration - video.currentTime;
@@ -130,3 +131,21 @@ observer.observe(animatedText);
 observer.observe(skillsH2);
 observer.observe(educationH2);
 observer.observe(projectsH2);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const projectCards = document.querySelectorAll('.project-card');
+  console.log('Found cards:', projectCards.length);
+
+  projectCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const childVideo = card.querySelector('video');
+      childVideo.loop = 'true';
+      childVideo.play();
+    });
+
+    card.addEventListener('mouseleave', () => {
+      const childVideo = card.querySelector('video');
+      childVideo.load();
+    });
+  });
+});

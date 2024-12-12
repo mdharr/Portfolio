@@ -800,40 +800,6 @@ footer div a {
     transform: scale(1.1);
 }
 
-@media screen and (max-width: 1135px) {
-    .skill-list img,
-    .skill-list svg {
-        width: 48px;
-        height: 48px;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .skills-container {
-		text-align: center;
-		padding: 0;
-    }
-	.skill-list {
-		/* justify-content: space-between; */
-		justify-content: center;
-	}
-}
-
-@media screen and (max-width: 487px) {
-	.skill-list img,
-	.skill-list svg {
-		width: 32px;
-        height: 32px;
-	}
-}
-
-@media screen and (max-width: 615px) {
-    .skill-list img,
-    .skill-list svg {
-		justify-content: space-between;
-    }
-}
-
 /* animated icon */
 .logo {
 	pointer-events: none;
@@ -1285,6 +1251,15 @@ footer div a {
   
   .project-card:hover .project-img img {
 	transform: scale(1.05);
+	opacity: 0;
+	display: none;
+  }
+
+  .project-img video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
   }
   
   /* Project Meta Styles */
@@ -1466,4 +1441,71 @@ footer div a {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
     content: "";
+}
+
+@media screen and (max-width: 1135px) {
+    .skill-list img,
+    .skill-list svg {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .skills-container {
+		text-align: center;
+		padding: 0;
+    }
+	.skill-list {
+		/* justify-content: space-between; */
+		justify-content: center;
+	}
+	.hero .scrollDown {
+		/* left: 2%; */
+		display: none;
+	}
+	.to-top {
+		position: fixed;
+		bottom: 5px;
+		cursor: pointer;
+		z-index: 50;
+		right: 2%;
+		bottom: 10px;
+		width: fit-content;
+		height: auto;
+		transition: .3s;
+		color: #fff;
+		font-size: 0.6rem;
+		writing-mode: vertical-rl;
+		-webkit-writing-mode: vertical-rl;
+	}
+	.to-top::after {
+		position: absolute;
+		top: -1.25em;
+		left: 1px;
+		width: 8px;
+		height: 8px;
+		border: 2px solid;
+		border-color: #fff #fff transparent transparent;
+		-webkit-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		content: "";
+	}
+}
+
+@media screen and (max-width: 487px) {
+	.skill-list img,
+	.skill-list svg {
+		width: 32px;
+        height: 32px;
+	}
+
+}
+
+@media screen and (max-width: 615px) {
+    .skill-list img,
+    .skill-list svg {
+		justify-content: space-between;
+    }
+
 }
