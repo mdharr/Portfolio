@@ -2,61 +2,30 @@ function toggleMobileMenu(){
 	document.getElementById("menu").classList.toggle("active");
 }
 
-// Configure GSAP
+function closeMobileMenu() {
+  if (menuEle.classList.contains("active")) {
+    document.getElementById("menu").classList.toggle("active");
+  }
+}
+
+const menuEle = document.querySelector('#menu');
+const menuItems = document.querySelectorAll('#menu li a');
+
+for (let item of menuItems) {
+  item.addEventListener('click', closeMobileMenu);
+}
+
+
 gsap.config({
     nullTargetWarn: false
 });
 
-// Custom ease for animations
+
+
 const easeInOutExpo = "0.87, 0, 0.13, 1";
 const easeOutExpo = "0.16, 1, 0.3, 1";
 const easeInExpo = "0.7, 0, 0.84, 0";
 
-
-// function animateLogo() {
-
-//     var tl = gsap.timeline({
-//         repeat: -1
-//     });
-    
-//     var tlRight = gsap.timeline({
-//         repeat: -1
-//     });
-
-//     CustomEase.create("easeInOutExpo", easeInOutExpo);
-
-//     tl.to(".circle-left", {
-//         x: 6,
-//         y: 0,
-//         z: 0,
-//         duration: 2,
-//         ease: "easeInOutExpo"
-//     }).to(".circle-left", {
-//         x: 0,
-//         y: 0,
-//         z: 0,
-//         duration: 2,
-//         ease: "easeInOutExpo"
-//     });
-
-//     tlRight.to(".circle-right", {
-//         x: -6,
-//         y: 0,
-//         z: 0,
-//         duration: 2,
-//         ease: "easeInOutExpo"
-//     }).to(".circle-right", {
-//         x: 0,
-//         y: 0,
-//         z: 0,
-//         duration: 2,
-//         ease: "easeInOutExpo"
-//     });
-// }
-
-// window.addEventListener("load", function() {
-//     animateLogo();
-// });
 
 const video = document.getElementById('bgVideo');
 video.playbackRate = 1;
@@ -134,7 +103,6 @@ observer.observe(projectsH2);
 
 document.addEventListener('DOMContentLoaded', () => {
   const projectCards = document.querySelectorAll('.project-card');
-  console.log('Found cards:', projectCards.length);
 
   projectCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
