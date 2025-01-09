@@ -75,8 +75,9 @@ header {
 	padding: 0 10px;
     display: flex;
     justify-content: space-between;
-    max-width: 1440px;
-    margin: auto;
+    /* max-width: 1440px; */
+    /* margin: auto; */
+	height: 100%;
     border-bottom: 1px solid rgb(255 251 230);
 	background-color: rgb(24 24 27);
 
