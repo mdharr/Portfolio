@@ -864,6 +864,8 @@ footer div a {
     padding: 2rem 0;
 	/* padding-top: 5rem; */
 	padding-top: 10rem;
+	position: relative;
+	margin-bottom: 50px;
 }
 
 .hero-content {
@@ -1362,9 +1364,12 @@ footer div a {
 
 
 .hero .scrollDown {
-    position: absolute;
-    bottom: 10px;
+    /* position: absolute;
     left: 50%;
+    bottom: 10px; */
+	position: absolute;
+    left: 50%;
+    bottom: 0;
 }
 
 .hero .scrollDown:before {
