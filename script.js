@@ -11,6 +11,16 @@ function closeMobileMenu() {
 const menuEle = document.querySelector('#menu');
 const menuItems = document.querySelectorAll('#menu li a');
 
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768) {
+            menuEle.classList.remove('active');
+        }
+    }, 250);
+});
+
 for (let item of menuItems) {
   item.addEventListener('click', closeMobileMenu);
 }
