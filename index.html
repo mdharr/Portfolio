@@ -25,10 +25,15 @@
 <body>
 	<div class="video-wrapper">
 		<video autoplay muted loop playsinline class="background-video" id="bgVideo">
-			<!-- <source src="imgs/stars_animation.mp4" type="video/mp4"> -->
 			<source src="imgs/space720.mp4" type="video/mp4">
 		</video>
 		<img id="shipImg" src="imgs/ship_planet.png" alt="">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <filter id="blur">
+                <feGaussianBlur stdDeviation="10"/>
+            </filter>
+        </svg>
+        <div class="h"></div>
 	</div>
 
 	<header id="top">
@@ -50,7 +55,7 @@
 					<a href="#projectsA">Projects</a>
 				</li>
 				<li>
-					<a href="mailto:mdharr7@gmail.com" class="button">Contact Me</a>
+					<a href="mailto:mdharr7@gmail.com" id="contact" class="button">Contact Me</a>
 				</li>
 			</ul>
 			<a href="#" class="mobile-toggle" onClick="toggleMobileMenu();">
@@ -120,28 +125,28 @@
 						<div class="floating-elements">
 
 							<div class="float-item" style="--delay: 0s">
-								<img src="imgs/javascript.png" alt="Spring" />
+								<img src="imgs/java.png" alt="Java" />
 							</div>
 							<div class="float-item" style="--delay: 1s">
-								<img src="imgs/java.png" alt="Angular" />
+								<img src="imgs/react.png" alt="React" />
 							</div>
 							<div class="float-item" style="--delay: 2s">
-								<img src="imgs/css.png" alt="Java" />
+								<img src="imgs/git.png" alt="Git" />
 							</div>
 							<div class="float-item" style="--delay: 0.5s">
-								<img src="imgs/git.png"  alt="TypeScript" />
+								<img src="imgs/angular.png" alt="Angular" />
 							</div>
 							<div class="float-item" style="--delay: 1.5s">
-								<img src="imgs/html.png" alt="MySQL" />
+								<img src="imgs/spring.png"  alt="Spring" />
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="scrollDown">
-				<span>Scroll</span>
-			</div>
+				<div class="scrollDown">
+					<span>Scroll</span>
+				</div>
 		</section>
+
 		<div id="skillsA"></div>
 		<section id="skills" class="skills container">
 			<h2>
@@ -380,6 +385,20 @@
 							</a>
 						</div>
 					</div>
+				</div>
+			</div>
+		</section>
+		<div id="destinationsA"></div>
+		<section id="destinations">
+			<h2>
+                <small>
+                    Some of my
+                </small>
+                Favorite Destinations
+            </h2>
+			<div class="destinations-wrapper">
+				<div id="map-container" data-map-url="https://www.google.com/maps/d/u/0/embed?mid=1dYJXyrHOqtH7pbRNFSweQ7-PpVBbJ-M&ehbc=2E312F">
+					<span class="loading-text">Loading map...</span>
 				</div>
 			</div>
 		</section>

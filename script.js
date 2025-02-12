@@ -30,17 +30,6 @@ window.addEventListener('resize', debounce(() => {
 const video = document.getElementById('bgVideo');
 if (video) {
   video.playbackRate = 1;
-  
-  // Use requestAnimationFrame for smooth transition
-  // let brightnessTransition;
-  // video.addEventListener('timeupdate', () => {
-  //     if (brightnessTransition) cancelAnimationFrame(brightnessTransition);
-      
-  //     brightnessTransition = requestAnimationFrame(() => {
-  //         const timeLeft = video.duration - video.currentTime;
-  //         video.style.filter = `brightness(${timeLeft < 2 ? 0.3 : 1})`;
-  //     });
-  // });
 }
 
 function animateFavicon() {
@@ -59,24 +48,6 @@ function animateFavicon() {
       currentFrame = (currentFrame + 1) % frames.length;
   }, 500);
 }
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-      const target = entry.target;
-      const sectionId = target.classList.contains('animated-text') ? null : target.closest('section')?.id;
-      
-      if (entry.isIntersecting) {
-          target.classList.add('visible');
-          if (sectionId) document.getElementById(sectionId)?.classList.add('visible');
-      } else if (isScrollingUp && !entry.isIntersecting) {
-          target.classList.remove('visible');
-          if (sectionId) document.getElementById(sectionId)?.classList.remove('visible');
-      }
-  });
-}, {
-  threshold: 0,
-  rootMargin: '0px'
-});
 
 let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
 let isScrollingUp = false;
@@ -152,6 +123,37 @@ if (shipImg) {
   }, 16));
 }
 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+      const target = entry.target;
+      
+      if (target.id === 'map-container' && entry.isIntersecting) {
+          const mapUrl = target.getAttribute('data-map-url');
+          const iframe = document.createElement('iframe');
+          iframe.src = mapUrl;
+          iframe.title = "Google Map";
+          target.innerHTML = '';
+          target.appendChild(iframe);
+          target.classList.add('loaded');
+          observer.unobserve(target);
+          return;
+      }
+      
+      const sectionId = target.classList.contains('animated-text') ? null : target.closest('section')?.id;
+      
+      if (entry.isIntersecting) {
+          target.classList.add('visible');
+          if (sectionId) document.getElementById(sectionId)?.classList.add('visible');
+      } else if (isScrollingUp && !entry.isIntersecting) {
+          target.classList.remove('visible');
+          if (sectionId) document.getElementById(sectionId)?.classList.remove('visible');
+      }
+  });
+}, {
+  threshold: 0,
+  rootMargin: '0px'
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   animateFavicon();
   
@@ -159,8 +161,71 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.animated-text'),
       document.querySelector('#skills h2'),
       document.querySelector('#education h2'),
-      document.querySelector('#projects h2')
+      document.querySelector('#projects h2'),
+      document.querySelector('#destinations h2'),
+      document.querySelector('#map-container'),
   ].filter(Boolean);
 
   elementsToObserve.forEach(element => observer.observe(element));
 });
+
+const container = document.querySelector('.h');
+        
+function getAuroraColor(i) {
+    const colors = [
+    // Almost black-blue
+    {
+      r: 3,
+      g: 6,
+      b: 20
+  },
+  // Very deep navy
+  {
+      r: 5,
+      g: 10,
+      b: 35
+  },
+  // Dark cosmic blue
+  {
+      r: 8,
+      g: 15,
+      b: 55
+  },
+  // Deep midnight blue
+  {
+      r: 12,
+      g: 25,
+      b: 75
+  }
+  ];
+    
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+for (let i = 1; i <= 80; i++) {
+    const circle = document.createElement('div');
+    circle.className = 'c';
+    
+    const color = getAuroraColor(i);
+    
+    // Apply styles dynamically
+    circle.style.cssText = `
+        border: 2px solid rgba(255,255,255,0.08);
+        border-radius: 400px;
+        position: absolute;
+        margin: auto;
+        box-shadow: 3px 0px rgba(${color.r},${color.g},${color.b},${-(i/40)}), 
+                   6px -5px rgba(${color.r-20},${color.g+30},${color.b-20},${-(i/40)});
+        width: ${i * 12}px;
+        height: ${i}px;
+        right: ${i}px;
+        bottom: ${i * 15}px;
+        filter: blur(${i/3 + 8}px);
+        transform-origin: ${i * 4}px ${i * 2}px;
+        animation: spin 3s ${i/10}s linear infinite;
+        background: rgba(${color.r}, ${color.g}, ${color.b}, ${1 - (i/80)});
+        mix-blend-mode: screen;
+    `;
+    
+    container.appendChild(circle);
+}

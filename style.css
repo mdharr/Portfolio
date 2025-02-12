@@ -59,11 +59,14 @@ body {
     height: 100vh;
     object-fit: cover;
     pointer-events: none;
-    z-index: -1;
+    z-index: -3;
 }
 
 .video-wrapper {
-	/* filter: brightness(0.6); */
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .video-wrapper img {
@@ -75,7 +78,7 @@ body {
     z-index: -1;
 }
 
-.video-wrapper::before {
+/* .video-wrapper::before {
 	content: '';
 	background-image: url('https://sunle-af.github.io/subhash/images/overlay.png');
 	object-fit: cover;
@@ -84,7 +87,7 @@ body {
 	width: 100%;
 	height:100%;
 	pointer-events: none;
-}
+} */
 
 .video-wrapper::after {
 	content: '';
@@ -177,11 +180,15 @@ header {
 					color: #fff;
 					border: 1px solid transparent;
 					&:hover {
-						background-color: var(--base-100);
 						border-radius:10px;
 						text-decoration:none;
-						border: 1px solid var(--purple);
 						color: var(--purple);
+					}
+				}
+				#contact {
+					&:hover {
+						background-color: var(--base-100);
+						border: 1px solid var(--purple);
 					}
 				}
 			}
@@ -740,7 +747,6 @@ h3 {
 }
 
 footer {
-	/* padding: 10px; */
     border-top: 1px solid rgb(255 251 230);
     margin-top: 150px;
     background-color: rgb(24 24 27);
@@ -750,6 +756,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 24px;
+	position: relative;
 }
 
 footer h3 {
@@ -914,6 +921,7 @@ footer div a {
 
 #shipImg {
     transition: transform 0.5s ease-out;
+	z-index: -1;
 }
 
 .description {
@@ -1036,6 +1044,8 @@ footer div a {
 
 .hero-image {
     position: relative;
+	/* display: flex; */
+    /* justify-content: end; */
 }
 
 .main-illustration {
@@ -1216,7 +1226,8 @@ footer div a {
 
 #skills,
 #education,
-#projects {
+#projects,
+#destinations {
   opacity: 0;
   transform: translateY(150px);
   transition: opacity 2s ease-out, transform 1.5s cubic-bezier(0,1.10,1,.99);
@@ -1224,7 +1235,8 @@ footer div a {
 
 #skills.visible,
 #education.visible,
-#projects.visible {
+#projects.visible,
+#destinations.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1325,6 +1337,15 @@ footer div a {
   .button-icon {
 	flex-shrink: 0;
   }
+
+  .destinations-wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	padding: 2rem;
+	max-width: 1400px;
+	margin: 0 auto;
+  }
   
 
   @media (max-width: 768px) {
@@ -1345,6 +1366,9 @@ footer div a {
 	  width: 100%;
 	  justify-content: center;
 	}
+	.destinations-wrapper {
+		padding: 0;
+	}
   }
   
   @media (max-width: 480px) {
@@ -1363,7 +1387,29 @@ footer div a {
 
 
 
+#map-container {
+    width: 640px;
+    height: 480px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#map-container .loading-text {
+    color: #666;
+	
+}
+
+#map-container.loaded .loading-text {
+    display: none;
+}
+
+#map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
 
 
 
@@ -1409,6 +1455,10 @@ footer div a {
     width: 2px;
     height: 50px;
     background: #eee;
+}
+
+.to-top:hover {
+	cursor: pointer;
 }
 
 @keyframes circlemove {
@@ -1531,4 +1581,25 @@ footer div a {
 		justify-content: space-between;
     }
 
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(90deg); }
+}
+
+
+.h {
+    position: fixed;
+    z-index: -2;
+    height: 100%;
+    width: 100%;
+    top: 75%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+.i4ewOd-pzNkMb-haAclf {
+	top: -60px;
 }
