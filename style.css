@@ -76,7 +76,7 @@ body {
 
 .video-wrapper::after {
 	content: '';
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-color: rgba(0, 0, 0, 0.3); */
     background-image: url(https://sunle-af.github.io/subhash/images/overlay.png);
 	background-repeat: repeat-y;
     position: fixed;
