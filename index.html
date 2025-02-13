@@ -13,6 +13,12 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js" defer></script>
 	<link rel="icon" type="image/svg+xml" href="imgs/favicon.svg">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+	crossorigin=""></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-48SSV7GRDZ"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -28,12 +34,7 @@
 			<source src="imgs/space720.mp4" type="video/mp4">
 		</video>
 		<img id="shipImg" src="imgs/ship_planet.png" alt="">
-		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <filter id="blur">
-                <feGaussianBlur stdDeviation="10"/>
-            </filter>
-        </svg>
-        <div class="h"></div>
+		<canvas id="canvas" style="mix-blend-mode: screen; z-index: -2; position: fixed;"></canvas>
 	</div>
 
 	<header id="top">
@@ -392,14 +393,15 @@
 		<section id="destinations">
 			<h2>
                 <small>
-                    Some of my
+                    Highlights from my
                 </small>
-                Favorite Destinations
+                World Travels
             </h2>
 			<div class="destinations-wrapper">
-				<div id="map-container" data-map-url="https://www.google.com/maps/d/u/0/embed?mid=1dYJXyrHOqtH7pbRNFSweQ7-PpVBbJ-M&ehbc=2E312F">
+				<!-- <div id="map-container" data-map-url="https://www.google.com/maps/d/u/0/embed?mid=1dYJXyrHOqtH7pbRNFSweQ7-PpVBbJ-M&ehbc=2E312F">
 					<span class="loading-text">Loading map...</span>
-				</div>
+				</div> -->
+				<div id="map"></div>
 			</div>
 		</section>
 		<a class="to-top" style="position: fixed; top: auto;" href="#top">PAGE TOP</a>
@@ -430,5 +432,11 @@
 		</div>
 		<p class="subtext">Built by <span class="text-primary ml-1 animate-pulse" style="color: white;">Michael Harrington</span></p>
 	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+	<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v3.0.3/dist/bundle.js"
+	crossorigin="anonymous"></script>
+	<script src="map.js"></script>
 </body>
 </html>

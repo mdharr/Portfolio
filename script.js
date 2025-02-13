@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const shipImg = document.querySelector('#shipImg');
 if (shipImg) {
   let currentScale = 1;
-  const scaleStep = 0.005;
-  const maxScale = 3;
+  const scaleStep = 0.001;
+  const maxScale = 1.5;
   const minScale = 1;
   let lastScrollPos = window.pageYOffset;
 
@@ -168,67 +168,55 @@ const observer = new IntersectionObserver((entries) => {
   rootMargin: '0px'
 });
 
-const container = document.querySelector('.h');
+var canvas = document.getElementById("canvas");
+canvas.setAttribute('mixedBlendMode', 'screen');
+var ctx = canvas.getContext("2d");
+var w, h;
+var nt = 0;
+var noise = new SimplexNoise();
+
+const colors = [
+    'rgb(3, 6, 20)',
+    'rgb(5, 10, 35)',
+    'rgb(8, 15, 55)',
+    'rgb(12, 25, 75)'
+];
+
+function resizer() {
+    w = ctx.canvas.width = window.innerWidth;
+    h = ctx.canvas.height = window.innerHeight;
+    ctx.filter = "blur(30px)";
+}
+resizer();
+window.onresize = () => resizer();
+
+function drawWave(n) {
+    nt += 0.002;
+    for(let i = 0; i < n; i++) {
+        ctx.beginPath();
+        ctx.lineWidth = 30;
+        ctx.strokeStyle = colors[i % colors.length];
         
-function getAuroraColor(i) {
-    const colors = [
-    // Almost black-blue
-    {
-      r: 3,
-      g: 6,
-      b: 20
-  },
-  // Very deep navy
-  {
-      r: 5,
-      g: 10,
-      b: 35
-  },
-  // Dark cosmic blue
-  {
-      r: 8,
-      g: 15,
-      b: 55
-  },
-  // Deep midnight blue
-  {
-      r: 12,
-      g: 25,
-      b: 75
-  }
-  ];
-    
-    return colors[Math.floor(Math.random() * colors.length)];
+        for(let x = 0; x < w; x += 30) {
+            var y = noise.noise3D(x/800, 0.3 * i, nt) * 100;
+            if (x === 0) {
+                ctx.moveTo(x, y + (h/2));
+            } else {
+                ctx.lineTo(x, y + (h/2));
+            }
+        }
+        ctx.stroke();
+        ctx.closePath();
+    }
 }
 
-const numberOfAuroraElements = isMobile ? 20 : 50;
-
-for (let i = 1; i <= numberOfAuroraElements; i++) {
-    const circle = document.createElement('div');
-    circle.className = 'c';
-    
-    const color = getAuroraColor(i);
-    
-    circle.style.cssText = `
-        border: 2px solid rgba(255,255,255,0.08);
-        border-radius: 400px;
-        position: absolute;
-        margin: auto;
-        box-shadow: 3px 0px rgba(${color.r},${color.g},${color.b},${-(i/40)}), 
-                   6px -5px rgba(${color.r-20},${color.g+30},${color.b-20},${-(i/40)});
-        width: ${i * 12}px;
-        height: ${i}px;
-        right: ${i}px;
-        bottom: ${i * 15}px;
-        filter: blur(${i/3 + 8}px);
-        transform-origin: ${i * 4}px ${i * 2}px;
-        animation: spin 3s ${i/10}s linear infinite;
-        background: rgba(${color.r}, ${color.g}, ${color.b}, ${1 - (i/80)});
-        mix-blend-mode: screen;
-    `;
-    
-    container.appendChild(circle);
+function render() {
+    ctx.fillStyle = "rgb(3, 6, 20)";
+    ctx.fillRect(0, 0, w, h);
+    drawWave(4);
+    requestAnimationFrame(render);
 }
+render();
 
 document.addEventListener('DOMContentLoaded', () => {
     animateFavicon();
