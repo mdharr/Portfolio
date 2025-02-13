@@ -325,9 +325,10 @@ h1 {
 
 .hero {
 	display:flex;
-	padding-top: 12rem;
+	padding-top: 16rem;
 	@media (max-width:1024px){
 		flex-direction:column;
+		padding-top: 12rem;
 	}
 	.hero-blue {
 		border-radius:30px;
