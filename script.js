@@ -6,6 +6,8 @@ function debounce(func, wait) {
   };
 }
 
+const isMobile = window.innerWidth <= 768;
+
 const menuEle = document.querySelector('#menu');
 const menuItems = document.querySelectorAll('#menu li a');
 
@@ -22,42 +24,54 @@ function closeMobileMenu() {
 menuItems.forEach(item => item.addEventListener('click', closeMobileMenu));
 
 window.addEventListener('resize', debounce(() => {
-  if (window.innerWidth > 768) {
-      menuEle.classList.remove('active');
-  }
-}, 250));
+    if (window.innerWidth > 768) {
+        menuEle.classList.remove('active');
+    }
+}, 250), { passive: true });
 
 const video = document.getElementById('bgVideo');
 if (video) {
-  video.playbackRate = 1;
+    video.playbackRate = 0.75;
+    if (isMobile) {
+        video.setAttribute('playsinline', '');
+        video.muted = true;
+    }
 }
 
 function animateFavicon() {
-  const favicon = document.querySelector('link[rel="icon"]');
-  if (!favicon) return;
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (!favicon) return;
 
-  const frames = [
-      'imgs/favicon-1.svg',
-      'imgs/favicon-2.svg',
-      'imgs/favicon-1.svg'
-  ];
-  let currentFrame = 0;
-  
-  setInterval(() => {
-      favicon.href = frames[currentFrame];
-      currentFrame = (currentFrame + 1) % frames.length;
-  }, 500);
+    const frames = [
+        'imgs/favicon-1.svg',
+        'imgs/favicon-2.svg',
+        'imgs/favicon-1.svg'
+    ];
+    let currentFrame = 0;
+    
+    const interval = isMobile ? 750 : 500;
+    
+    setInterval(() => {
+        favicon.href = frames[currentFrame];
+        currentFrame = (currentFrame + 1) % frames.length;
+    }, interval);
 }
 
 let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
 let isScrollingUp = false;
-let scrollTimeout;
+let ticking = false;
 
-window.addEventListener('scroll', debounce(() => {
-  const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-  isScrollingUp = currentScrollTop < lastScrollTop;
-  lastScrollTop = currentScrollTop;
-}, 16));
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+            isScrollingUp = currentScrollTop < lastScrollTop;
+            lastScrollTop = currentScrollTop;
+            ticking = false;
+        });
+        ticking = true;
+    }
+}, { passive: true });
 
 document.addEventListener('DOMContentLoaded', () => {
   const projectCards = document.querySelectorAll('.project-card');
@@ -154,21 +168,6 @@ const observer = new IntersectionObserver((entries) => {
   rootMargin: '0px'
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  animateFavicon();
-  
-  const elementsToObserve = [
-      document.querySelector('.animated-text'),
-      document.querySelector('#skills h2'),
-      document.querySelector('#education h2'),
-      document.querySelector('#projects h2'),
-      document.querySelector('#destinations h2'),
-      document.querySelector('#map-container'),
-  ].filter(Boolean);
-
-  elementsToObserve.forEach(element => observer.observe(element));
-});
-
 const container = document.querySelector('.h');
         
 function getAuroraColor(i) {
@@ -202,13 +201,14 @@ function getAuroraColor(i) {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-for (let i = 1; i <= 80; i++) {
+const numberOfAuroraElements = isMobile ? 20 : 50;
+
+for (let i = 1; i <= numberOfAuroraElements; i++) {
     const circle = document.createElement('div');
     circle.className = 'c';
     
     const color = getAuroraColor(i);
     
-    // Apply styles dynamically
     circle.style.cssText = `
         border: 2px solid rgba(255,255,255,0.08);
         border-radius: 400px;
@@ -229,3 +229,18 @@ for (let i = 1; i <= 80; i++) {
     
     container.appendChild(circle);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    animateFavicon();
+    
+    const elementsToObserve = [
+        document.querySelector('.animated-text'),
+        document.querySelector('#skills h2'),
+        document.querySelector('#education h2'),
+        document.querySelector('#projects h2'),
+        document.querySelector('#destinations h2'),
+        document.querySelector('#map-container'),
+    ].filter(Boolean);
+  
+    elementsToObserve.forEach(element => observer.observe(element));
+});
