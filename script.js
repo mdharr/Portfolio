@@ -111,31 +111,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-const shipImg = document.querySelector('#shipImg');
-if (shipImg) {
-  let currentScale = 1;
-  const scaleStep = 0.001;
-  const maxScale = 1.5;
-  const minScale = 1;
-  let lastScrollPos = window.pageYOffset;
+// const shipImg = document.querySelector('#shipImg');
+// if (shipImg) {
+//   let currentScale = 1;
+//   const scaleStep = 0.001;
+//   const maxScale = 1.5;
+//   const minScale = 1;
+//   let lastScrollPos = window.pageYOffset;
 
-  window.addEventListener('scroll', debounce(() => {
-      requestAnimationFrame(() => {
-          const scrollPos = window.pageYOffset;
+//   window.addEventListener('scroll', debounce(() => {
+//       requestAnimationFrame(() => {
+//           const scrollPos = window.pageYOffset;
           
-          if (scrollPos === 0) {
-              currentScale = 1;
-          } else if (scrollPos > lastScrollPos) {
-              currentScale = Math.min(currentScale + scaleStep, maxScale);
-          } else {
-              currentScale = Math.max(currentScale - scaleStep, minScale);
-          }
+//           if (scrollPos === 0) {
+//               currentScale = 1;
+//           } else if (scrollPos > lastScrollPos) {
+//               currentScale = Math.min(currentScale + scaleStep, maxScale);
+//           } else {
+//               currentScale = Math.max(currentScale - scaleStep, minScale);
+//           }
           
-          shipImg.style.transform = `scale(${currentScale})`;
-          lastScrollPos = scrollPos;
-      });
-  }, 16));
-}
+//           shipImg.style.transform = `scale(${currentScale})`;
+//           lastScrollPos = scrollPos;
+//       });
+//   }, 16));
+// }
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
