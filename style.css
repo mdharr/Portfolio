@@ -1,3 +1,12 @@
+html {
+    overflow-y: scroll;
+    overscroll-behavior: none;
+}
+
+body {
+    overflow-y: auto;
+}
+
 *, *::before, *::after {
 	box-sizing: border-box;
 	margin:0;
