@@ -5,6 +5,7 @@ html {
 
 body {
     overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 *, *::before, *::after {
