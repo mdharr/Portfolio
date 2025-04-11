@@ -925,6 +925,12 @@ footer div a {
 	line-height: 2;
 }
 
+.cta-group-header {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
 .cta-group {
     display: flex;
 		justify-content: center;
