@@ -927,6 +927,7 @@ footer div a {
 
 .cta-group {
     display: flex;
+		justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
 }
@@ -1329,7 +1330,7 @@ footer div a {
   }
   
   .project-meta {
-	padding: 1.5rem;
+	padding: 1.25rem;
   }
   
   .project-description h4 {
