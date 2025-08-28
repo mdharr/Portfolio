@@ -1039,12 +1039,18 @@ footer div a {
 
 .hero-image {
     position: relative;
+		display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-illustration {
-    width: 100%;
+    width: 65%;
     max-width: 500px;
-    animation: float 6s ease-in-out infinite;
+    /* animation: float 6s ease-in-out infinite; */
+		border: 2px solid white;
+    border-radius: 50%;
+		box-shadow: ;
 }
 
 @keyframes float {
