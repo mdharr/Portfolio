@@ -576,8 +576,8 @@ h3 {
 			p {
 				margin-bottom:10px;
 				line-height: 1.8;
-				font-size: 16px;
-                text-align: justify;
+				font-size: 14px;
+                /* text-align: justify; */
                 hyphens: auto;
 			}
 			figure {
