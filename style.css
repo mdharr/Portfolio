@@ -18,16 +18,19 @@ body {
 	background: transparent;
 }
   
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
 	background: var(--purple);
 	border-radius: 50px;
 	min-height: 40px;
-}
-  
+} */
 
-* {
-	scrollbar-color: var(--purple) transparent;
+::-webkit-scrollbar {
+    display: none;
 }
+
+/* * {
+	scrollbar-color: var(--purple) transparent;
+} */
 
 html {
 	scroll-behavior: smooth;
